@@ -14,7 +14,10 @@
             <p class="eyebrow">Питание за день</p>
             <h1 id="app-title">Калькулятор омега-3, омега-6, белков и углеводов</h1>
           </div>
-          <button class="ghost-button" id="clear-day" type="button">Очистить день</button>
+          <div class="topbar-actions">
+            <button class="ghost-button" id="theme-toggle" type="button" aria-label="Переключить тему">🌙 Тёмная тема</button>
+            <button class="ghost-button" id="clear-day" type="button">Очистить день</button>
+          </div>
         </header>
 
         <section class="summary-grid" aria-label="Итоги">
@@ -130,6 +133,30 @@
             </label>
             <button class="secondary-button" type="submit">Сохранить продукт</button>
           </form>
+        </section>
+
+        <section class="panel video-panel" aria-labelledby="video-title">
+          <div class="panel-heading">
+            <h2 id="video-title">Полезное видео</h2>
+            <a
+              class="video-link"
+              href="https://youtu.be/unkpIhgGOeU?si=GmHcngOtkj3lOi9m"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Открыть на YouTube
+            </a>
+          </div>
+          <div class="video-frame-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/unkpIhgGOeU"
+              title="Видео о питании на YouTube"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
         </section>
       </section>
     </main>
