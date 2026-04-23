@@ -64,6 +64,41 @@ body {
   color: var(--text);
 }
 
+.consultation-button {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 20;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 900;
+  font-size: 0.8rem;
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.consultation-button img {
+  width: 92px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
+}
+
+.consultation-button span {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.consultation-button:hover img {
+  transform: translateY(-2px) scale(1.02);
+}
+
 button,
 input,
 select {
@@ -467,6 +502,15 @@ h2 {
 }
 
 @media (max-width: 640px) {
+  .consultation-button {
+    top: 8px;
+    left: 8px;
+  }
+
+  .consultation-button img {
+    width: 74px;
+  }
+
   .app-shell {
     width: min(100% - 20px, 1180px);
     padding: 10px 0;
