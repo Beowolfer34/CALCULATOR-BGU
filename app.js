@@ -105,9 +105,11 @@ const groupLabels = {
 const STORAGE_KEYS = {
   meals: "omega-calculator-meals",
   customProducts: "omega-calculator-products",
+  theme: "omega-calculator-theme",
 };
 
 const elements = {
+  themeToggle: document.querySelector("#theme-toggle"),
   clearDay: document.querySelector("#clear-day"),
   categoryFilter: document.querySelector("#category-filter"),
   productSearch: document.querySelector("#product-search"),
@@ -139,6 +141,7 @@ const elements = {
 
 let customProducts = load(STORAGE_KEYS.customProducts, []);
 let meals = load(STORAGE_KEYS.meals, []);
+let theme = load(STORAGE_KEYS.theme, "light");
 
 function load(key, fallback) {
   try {
@@ -150,6 +153,20 @@ function load(key, fallback) {
 
 function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
+}
+
+function applyTheme(value) {
+  theme = value === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = theme;
+
+  if (!elements.themeToggle) return;
+  elements.themeToggle.textContent = theme === "dark" ? "☀️ Светлая тема" : "🌙 Тёмная тема";
+  elements.themeToggle.setAttribute("aria-label", theme === "dark" ? "Включить светлую тему" : "Включить тёмную тему");
+}
+
+function toggleTheme() {
+  applyTheme(theme === "dark" ? "light" : "dark");
+  save(STORAGE_KEYS.theme, theme);
 }
 
 function getProducts() {
@@ -445,6 +462,8 @@ elements.clearDay.addEventListener("click", () => {
   renderMeals();
 });
 
+elements.themeToggle?.addEventListener("click", toggleTheme);
+
 elements.customForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const name = elements.customName.value.trim();
@@ -472,6 +491,7 @@ elements.customForm.addEventListener("submit", (event) => {
   renderPreview();
 });
 
+applyTheme(theme);
 renderEggCategories();
 renderProductSelect();
 renderMeals();
