@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор нутриентов</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-labelledby="app-title">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Питание за день</p>
+            <h1 id="app-title">Калькулятор омега-3, омега-6, белков и углеводов</h1>
+          </div>
+          <button class="ghost-button" id="clear-day" type="button">Очистить день</button>
+        </header>
+
+        <section class="summary-grid" aria-label="Итоги">
+          <article class="metric omega3">
+            <span>Омега-3</span>
+            <strong id="total-omega3">0 г</strong>
+          </article>
+          <article class="metric omega6">
+            <span>Омега-6</span>
+            <strong id="total-omega6">0 г</strong>
+          </article>
+          <article class="metric protein">
+            <span>Белки</span>
+            <strong id="total-protein">0 г</strong>
+          </article>
+          <article class="metric carbs">
+            <span>Углеводы</span>
+            <strong id="total-carbs">0 г</strong>
+          </article>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel input-panel" aria-labelledby="add-title">
+            <div class="panel-heading">
+              <h2 id="add-title">Добавить продукт</h2>
+              <label class="field compact">
+                <span>Поиск</span>
+                <input id="product-search" type="search" placeholder="Например, лосось" autocomplete="off" />
+              </label>
+            </div>
+
+            <form class="add-form" id="meal-form">
+              <label class="field">
+                <span>Группа</span>
+                <select id="category-filter">
+                  <option value="all">Все продукты</option>
+                  <option value="protein">Преобладает белок</option>
+                  <option value="carbs">Преобладают углеводы</option>
+                  <option value="fats">Преобладают жиры</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Продукт</span>
+                <select id="product-select" required></select>
+              </label>
+              <div class="egg-tools" id="egg-tools" hidden>
+                <fieldset class="unit-toggle" aria-label="Способ расчета яйца">
+                  <label>
+                    <input type="radio" name="egg-unit" value="grams" checked />
+                    <span>В граммах</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="egg-unit" value="pieces" />
+                    <span>В яйцах</span>
+                  </label>
+                </fieldset>
+                <div class="egg-piece-fields" id="egg-piece-fields" hidden>
+                  <label class="field">
+                    <span>Категория</span>
+                    <select id="egg-category"></select>
+                  </label>
+                  <label class="field">
+                    <span>Количество, шт.</span>
+                    <input id="egg-count" type="number" min="1" max="100" step="1" value="1" />
+                  </label>
+                </div>
+                <p class="egg-note" id="egg-note"></p>
+              </div>
+              <label class="field" id="grams-field">
+                <span>Количество, г</span>
+                <input id="grams-input" type="number" min="1" max="5000" step="1" value="100" required />
+              </label>
+              <button class="primary-button" type="submit">Добавить в день</button>
+            </form>
+
+            <div class="preview" id="product-preview" aria-live="polite"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="meal-title">
+            <div class="panel-heading">
+              <h2 id="meal-title">Список за день</h2>
+              <span class="count-pill" id="meal-count">0 позиций</span>
+            </div>
+            <div class="meal-list" id="meal-list"></div>
+          </section>
+        </div>
+
+        <section class="panel product-editor" aria-labelledby="custom-title">
+          <div class="panel-heading">
+            <h2 id="custom-title">Свой продукт</h2>
+            <p>Значения указываются на 100 г продукта.</p>
+          </div>
+          <form class="custom-form" id="custom-form">
+            <label class="field">
+              <span>Название</span>
+              <input id="custom-name" type="text" placeholder="Например, домашняя гранола" required />
+            </label>
+            <label class="field">
+              <span>Омега-3, г</span>
+              <input id="custom-omega3" type="number" min="0" step="0.01" value="0" required />
+            </label>
+            <label class="field">
+              <span>Омега-6, г</span>
+              <input id="custom-omega6" type="number" min="0" step="0.01" value="0" required />
+            </label>
+            <label class="field">
+              <span>Белки, г</span>
+              <input id="custom-protein" type="number" min="0" step="0.1" value="0" required />
+            </label>
+            <label class="field">
+              <span>Углеводы, г</span>
+              <input id="custom-carbs" type="number" min="0" step="0.1" value="0" required />
+            </label>
+            <button class="secondary-button" type="submit">Сохранить продукт</button>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
