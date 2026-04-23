@@ -417,6 +417,35 @@ h2 {
   line-height: 1;
 }
 
+.video-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.video-link {
+  color: var(--green);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.video-link:hover {
+  text-decoration: underline;
+}
+
+.video-frame-wrap {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  overflow: hidden;
+}
+
+.video-frame-wrap iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
 @media (max-width: 920px) {
   .summary-grid,
   .content-grid,
